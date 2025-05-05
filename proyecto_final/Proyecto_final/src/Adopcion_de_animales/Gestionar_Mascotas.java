@@ -25,6 +25,7 @@ public class Gestionar_Mascotas extends JFrame {
 	private JTextField cajaraza;
 	private JTextField cajaedad;
 	private JTable TablaDatos;
+	private JTable table;
 
 	 
 	public static void main(String[] args) {
@@ -108,13 +109,22 @@ public class Gestionar_Mascotas extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(btnAgragarMascota);
 		
-		TablaDatos = new JTable();
+		 String[] columnNames = {"Nombre", "Especie", "Raza", "Edad"};
+		  DefaultTableModel tableModel = new DefaultTableModel(null, columnNames);
+		table = new JTable(tableModel);
+		table.setBounds(10, 50, 414, 95);
+		//contentPane.add(table);
+		tableModel.addRow(new String[]{"Nombre", "Especie", "Raza", "Edad"});
+		 JScrollPane scrollPane = new JScrollPane(table);
+		 contentPane.add(scrollPane);
+		/*
 		 String[] columnNames = {"Nombre", "Especie", "Raza", "Edad"};
 		  DefaultTableModel tableModel = new DefaultTableModel(columnNames, 3);
+		  TablaDatos = new JTable(tableModel);
 		TablaDatos.setBounds(10, 46, 414, 98);
 		contentPane.add(TablaDatos);
         JScrollPane scrollPane = new JScrollPane(TablaDatos);
-
+        */
 		
 		
 	}
