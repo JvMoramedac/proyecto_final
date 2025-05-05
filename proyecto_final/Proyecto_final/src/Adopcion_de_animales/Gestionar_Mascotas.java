@@ -4,7 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -12,6 +14,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JTable;
 
 public class Gestionar_Mascotas extends JFrame {
 
@@ -21,9 +24,8 @@ public class Gestionar_Mascotas extends JFrame {
 	private JTextField cajaespecie;
 	private JTextField cajaraza;
 	private JTextField cajaedad;
+	private JTable TablaDatos;
 
-	/**
-	 * Launch the application.
 	 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -37,8 +39,6 @@ public class Gestionar_Mascotas extends JFrame {
 			}
 		});
 	}
-	 * Create the frame.
-	 */
 	public Gestionar_Mascotas() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -107,6 +107,14 @@ public class Gestionar_Mascotas extends JFrame {
 		});
 		contentPane.setLayout(null);
 		contentPane.add(btnAgragarMascota);
+		
+		TablaDatos = new JTable();
+		 String[] columnNames = {"Nombre", "Especie", "Raza", "Edad"};
+		  DefaultTableModel tableModel = new DefaultTableModel(columnNames, 3);
+		TablaDatos.setBounds(10, 46, 414, 98);
+		contentPane.add(TablaDatos);
+        JScrollPane scrollPane = new JScrollPane(TablaDatos);
+
 		
 		
 	}
