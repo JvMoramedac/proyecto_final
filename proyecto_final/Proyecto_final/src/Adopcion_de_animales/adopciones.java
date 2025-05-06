@@ -54,7 +54,7 @@ public class adopciones extends JFrame {
 			}
 		});
 		btnGestionarMascota.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnGestionarMascota.setBounds(108, 167, 215, 39);
+		btnGestionarMascota.setBounds(116, 167, 215, 39);
 		contentPane.add(btnGestionarMascota);
 		
 		JButton btnResgistrarAdopción = new JButton("Registrar Adopción");
@@ -74,13 +74,17 @@ public class adopciones extends JFrame {
 		contentPane.add(lblGestiondeAdopcion);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("proyecto_final\\Proyecto_final\\src\\imagenes\\perro-removebg-preview (1).png"));
-		lblNewLabel.setBounds(60, 167, 40, 39);
+		lblNewLabel.setIcon(new ImageIcon("proyecto_final\\proyecto_final\\Proyecto_final\\src\\imagenes\\perro.png"));
+		lblNewLabel.setBounds(58, 167, 40, 39);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("proyecto_final\\Proyecto_final\\src\\imagenes\\humano-removebg-preview (1).png"));
-		lblNewLabel_1.setBounds(60, 217, 40, 39);
+		lblNewLabel_1.setIcon(new ImageIcon("proyecto_final\\proyecto_final\\Proyecto_final\\src\\imagenes\\humano.png"));
+		lblNewLabel_1.setBounds(60, 211, 40, 39);
 		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBounds(60, 211, 40, 39);
+		contentPane.add(lblNewLabel_3);
 	}
 }
