@@ -11,6 +11,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class adopciones extends JFrame {
 
@@ -71,5 +72,15 @@ public class adopciones extends JFrame {
 		lblGestiondeAdopcion.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblGestiondeAdopcion.setBounds(84, 11, 285, 78);
 		contentPane.add(lblGestiondeAdopcion);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Alumno1\\DAM\\Tercer_Trimestre\\proyecto_final\\imagenes\\perro-removebg-preview (1).png"));
+		lblNewLabel.setBounds(60, 167, 40, 39);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Alumno1\\DAM\\Tercer_Trimestre\\proyecto_final\\imagenes\\humano-removebg-preview (1).png"));
+		lblNewLabel_1.setBounds(60, 217, 40, 39);
+		contentPane.add(lblNewLabel_1);
 	}
 }
