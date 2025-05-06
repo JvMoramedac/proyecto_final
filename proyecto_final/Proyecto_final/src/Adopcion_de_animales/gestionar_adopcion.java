@@ -7,15 +7,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class gestionar_adopcion extends JFrame {
-	private JTextField textFieldNombre;
-	private JTextField textFieldDNI;
-	private JTextField textFieldNTelefono;
-	private JTextField textFieldNombreMascota;
+	private JTextField cajaNombre;
+	private JTextField cajaDNI;
+	private JTextField cajaNTelefono;
+	private JTextField cajaNombreMascota;
 	public gestionar_adopcion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -51,25 +52,44 @@ public class gestionar_adopcion extends JFrame {
 		lblNombreMascota.setBounds(27, 195, 87, 14);
 		contentPane.add(lblNombreMascota);
 		
-		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(203, 117, 86, 20);
-		contentPane.add(textFieldNombre);
-		textFieldNombre.setColumns(10);
+		cajaNombre = new JTextField();
+		cajaNombre.setBounds(203, 117, 86, 20);
+		contentPane.add(cajaNombre);
+		cajaNombre.setColumns(10);
 		
-		textFieldDNI = new JTextField();
-		textFieldDNI.setBounds(203, 142, 86, 20);
-		contentPane.add(textFieldDNI);
-		textFieldDNI.setColumns(10);
+		cajaDNI = new JTextField();
+		cajaDNI.setBounds(203, 142, 86, 20);
+		contentPane.add(cajaDNI);
+		cajaDNI.setColumns(10);
 		
-		textFieldNTelefono = new JTextField();
-		textFieldNTelefono.setBounds(203, 167, 86, 20);
-		contentPane.add(textFieldNTelefono);
-		textFieldNTelefono.setColumns(10);
+		cajaNTelefono = new JTextField();
+		cajaNTelefono.setBounds(203, 167, 86, 20);
+		contentPane.add(cajaNTelefono);
+		cajaNTelefono.setColumns(10);
 		
-		textFieldNombreMascota = new JTextField();
-		textFieldNombreMascota.setBounds(203, 192, 86, 20);
-		contentPane.add(textFieldNombreMascota);
-		textFieldNombreMascota.setColumns(10);
+		cajaNombreMascota = new JTextField();
+		cajaNombreMascota.setBounds(203, 192, 86, 20);
+		contentPane.add(cajaNombreMascota);
+		cajaNombreMascota.setColumns(10);
+		
+		JButton btnAdoptarAnimal = new JButton("Adoptar Animal");
+		btnAdoptarAnimal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConexionMySQL conexion = new ConexionMySQL("root", "" , "centro_de_adopcon");
+				try {
+					conexion.conectar();
+					String sentencia = "INSERT INTO adopcion (Nombre, D.N.I, Nº.Telefono, Nombre Mascota ) VALUES ('" + cajaNombre.getText() + "','" + cajaDNI.getText()+ "','" + cajaNTelefono.getText() + "','" + cajaNombreMascota.getText()+"')";
+					conexion.ejecutarInsertDeleteUpdate(sentencia);
+					conexion.desconectar();
+					dispose();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnAdoptarAnimal.setBounds(88, 11, 140, 23);
+		contentPane.add(btnAdoptarAnimal);
 		
 	}
 	
