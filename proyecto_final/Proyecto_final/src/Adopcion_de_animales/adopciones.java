@@ -74,12 +74,12 @@ public class adopciones extends JFrame {
 		contentPane.add(lblGestiondeAdopcion);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Alumno1\\DAM\\Tercer_Trimestre\\proyecto_final\\imagenes\\perro-removebg-preview (1).png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Alumno1\\DAM\\Tercer_Trimestre\\prueba\\proyecto_final\\proyecto_final\\Proyecto_final\\src\\imagenes\\perro-removebg-preview (1).png"));
 		lblNewLabel.setBounds(60, 167, 40, 39);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Alumno1\\DAM\\Tercer_Trimestre\\proyecto_final\\imagenes\\humano-removebg-preview (1).png"));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Alumno1\\DAM\\Tercer_Trimestre\\prueba\\proyecto_final\\proyecto_final\\Proyecto_final\\src\\imagenes\\humano-removebg-preview (1).png"));
 		lblNewLabel_1.setBounds(60, 217, 40, 39);
 		contentPane.add(lblNewLabel_1);
 	}
