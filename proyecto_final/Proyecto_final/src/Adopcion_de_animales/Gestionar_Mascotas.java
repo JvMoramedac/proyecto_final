@@ -49,6 +49,12 @@ public class Gestionar_Mascotas extends JFrame {
 		setContentPane(contentPane);
 		
 		JButton btnVolverAlMenu = new JButton("Volver Al Menú");
+		btnVolverAlMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				adopciones A1 = new adopciones();
+				A1.setVisible(true);
+			}
+		});
 		btnVolverAlMenu.setBounds(241, 11, 108, 23);
 		contentPane.add(btnVolverAlMenu);
 		

@@ -59,6 +59,8 @@ public class adopciones extends JFrame {
 		JButton btnResgistrarAdopción = new JButton("Registrar Adopción");
 		btnResgistrarAdopción.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				gestionar_adopcion M2 = new gestionar_adopcion ();
+				M2.setVisible(true);
 			}
 		});
 		btnResgistrarAdopción.setFont(new Font("Tahoma", Font.PLAIN, 20));
