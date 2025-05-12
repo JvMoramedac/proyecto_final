@@ -101,7 +101,7 @@ public class Gestionar_Mascotas extends JFrame {
 				ConexionMySQL conexion = new ConexionMySQL("root", "" , "centro_de_adopcon");
 				try {
 					conexion.conectar();
-					String sentencia = "INSERT INTO animal (Nombre, Especie, Raza, Edad ) VALUES ('" + cajanombre.getText() + "','" + cajaespecie.getText()+ "','" + cajaraza.getText() + "','" + cajaedad.getText()+"')";
+					String sentencia = "INSERT INTO mascotas (Nombre, Especie, Raza, Edad ) VALUES ('" + cajanombre.getText() + "','" + cajaespecie.getText()+ "','" + cajaraza.getText() + "','" + cajaedad.getText()+"')";
 					conexion.ejecutarInsertDeleteUpdate(sentencia);
 					conexion.desconectar();
 					dispose();

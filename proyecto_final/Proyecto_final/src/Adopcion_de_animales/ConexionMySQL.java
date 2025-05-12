@@ -110,4 +110,9 @@ public class ConexionMySQL {
 
         return fila;
     }
+
+	public Connection getConexion() {
+		// TODO Auto-generated method stub
+		return connection;
+	}
 }

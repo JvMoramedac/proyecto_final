@@ -1,0 +1,23 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 134217728 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#
+#   Windows 11 , 64 bit Build 22621 (10.0.22621.5124)
+Time: Mon May 12 11:10:20 2025 Hora de verano romance elapsed time: 0.277558 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000212f0c7cb80):  JavaThread "Unknown thread" [_thread_in_vm, id=30156, stack(0x000000d672200000,0x000000d672300000)]
+
+Stack: [0x000000d672200000,0x000000d672300000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x67d2c9]
