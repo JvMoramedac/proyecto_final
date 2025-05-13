@@ -85,8 +85,11 @@ public class gestionar_adopcion extends JFrame {
                 ConexionMySQL conexion = new ConexionMySQL("root", "", "centro_de_adopcon");
                 try {
                     conexion.conectar();
-                    String sentencia = "INSERT INTO adopcion (Nombre, D.N.I, Nº.Telefono, Nombre Mascota ) VALUES ('" + cajaNombre.getText() + "','" + cajaDNI.getText()+ "','" + cajaNTelefono.getText() + "','" + cajaNombreMascota.getText()+"')";
+                    String sentencia = "INSERT INTO adopcion (Nombre, DNI, NTelefono, Nombre_Mascota ) VALUES ('" + cajaNombre.getText() + "','" + cajaDNI.getText()+ "','" + cajaNTelefono.getText() + "','" + cajaNombreMascota.getText()+"')";
                     conexion.ejecutarInsertDeleteUpdate(sentencia);
+                    String nombreMascota = cajaNombreMascota.getText();
+                    String sentencia1 = "DELETE FROM mascotas WHERE Nombre = '" + nombreMascota + "'";
+                    conexion.ejecutarInsertDeleteUpdate(sentencia1);
                     conexion.desconectar();
                     dispose();
                 } catch (SQLException e1) {
