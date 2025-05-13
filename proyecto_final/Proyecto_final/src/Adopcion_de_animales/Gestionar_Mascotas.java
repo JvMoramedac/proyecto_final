@@ -105,8 +105,8 @@ public class Gestionar_Mascotas extends JFrame {
 					conexion.ejecutarInsertDeleteUpdate(sentencia);
 					conexion.desconectar();
 					dispose();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
+				} catch (SQLException e1) 
+				{					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
