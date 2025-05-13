@@ -49,7 +49,7 @@ public class adopciones extends JFrame {
 		JButton btnGestionarMascota = new JButton("Gestionar Mascotas");
 		btnGestionarMascota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Gestionar_Mascotas M1 = new Gestionar_Mascotas();
+				modificar_agragar_mascota M1 = new modificar_agragar_mascota();
 				M1.setVisible(true);
 			}
 		});
