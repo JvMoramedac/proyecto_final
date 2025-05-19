@@ -29,6 +29,7 @@ public class gestionar_adopcion extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         JPanel contentPane = new JPanel();
+		setLocationRelativeTo(null);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);

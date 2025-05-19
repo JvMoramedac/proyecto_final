@@ -41,23 +41,25 @@ public class adopciones extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		setLocationRelativeTo(null);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		JButton btnGestionarMascota = new JButton("Gestionar Mascotas");
+		btnGestionarMascota.setBounds(116, 167, 215, 39);
 		btnGestionarMascota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				modificar_agragar_mascota M1 = new modificar_agragar_mascota();
 				M1.setVisible(true);
 			}
 		});
+		contentPane.setLayout(null);
 		btnGestionarMascota.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnGestionarMascota.setBounds(116, 167, 215, 39);
 		contentPane.add(btnGestionarMascota);
 		
 		JButton btnResgistrarAdopción = new JButton("Registrar Adopción");
+		btnResgistrarAdopción.setBounds(116, 217, 207, 33);
 		btnResgistrarAdopción.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestionar_adopcion M2 = new gestionar_adopcion ();
@@ -65,22 +67,21 @@ public class adopciones extends JFrame {
 			}
 		});
 		btnResgistrarAdopción.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnResgistrarAdopción.setBounds(116, 217, 207, 33);
 		contentPane.add(btnResgistrarAdopción);
 		
 		JLabel lblGestiondeAdopcion = new JLabel("Gestión De Adopción");
-		lblGestiondeAdopcion.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblGestiondeAdopcion.setBounds(84, 11, 285, 78);
+		lblGestiondeAdopcion.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		contentPane.add(lblGestiondeAdopcion);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(adopciones.class.getResource("/imagenes/perro.png")));
 		lblNewLabel.setBounds(58, 167, 40, 39);
+		lblNewLabel.setIcon(new ImageIcon(adopciones.class.getResource("/imagenes/perro.png")));
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(adopciones.class.getResource("/imagenes/humano.png")));
 		lblNewLabel_1.setBounds(60, 211, 40, 39);
+		lblNewLabel_1.setIcon(new ImageIcon(adopciones.class.getResource("/imagenes/humano.png")));
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
