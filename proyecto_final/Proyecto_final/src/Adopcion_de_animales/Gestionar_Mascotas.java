@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTable;
+import javax.swing.ImageIcon;
 
 public class Gestionar_Mascotas extends JFrame {
 
@@ -124,6 +125,11 @@ public class Gestionar_Mascotas extends JFrame {
 		tableModel.addRow(new String[]{"Nombre", "Especie", "Raza", "Edad"});
 		 JScrollPane scrollPane = new JScrollPane(table);
 		 contentPane.add(scrollPane);
+		 
+		 JLabel lblNewLabel = new JLabel("New label");
+		 lblNewLabel.setIcon(new ImageIcon(Gestionar_Mascotas.class.getResource("/imagenes/fondoprincipal.jpg")));
+		 lblNewLabel.setBounds(0, 0, 434, 261);
+		 contentPane.add(lblNewLabel);
 		/*
 		 String[] columnNames = {"Nombre", "Especie", "Raza", "Edad"};
 		  DefaultTableModel tableModel = new DefaultTableModel(columnNames, 3);

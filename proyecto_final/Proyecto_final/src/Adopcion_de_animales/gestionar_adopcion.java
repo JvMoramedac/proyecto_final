@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.ImageIcon;
 
 public class gestionar_adopcion extends JFrame {
     private JTextField cajaNombre;
@@ -138,6 +139,11 @@ public class gestionar_adopcion extends JFrame {
         });
         btnEliminarMascota.setBounds(88, 330, 140, 23);
         contentPane.add(btnEliminarMascota);
+        
+        JLabel lblNewLabel = new JLabel("New label");
+        lblNewLabel.setIcon(new ImageIcon(gestionar_adopcion.class.getResource("/imagenes/fondoprincipal.jpg")));
+        lblNewLabel.setBounds(0, 0, 434, 261);
+        contentPane.add(lblNewLabel);
     }
 
     // Método para cargar los datos en la tabla

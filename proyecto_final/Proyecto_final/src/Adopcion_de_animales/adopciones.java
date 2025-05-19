@@ -74,18 +74,13 @@ public class adopciones extends JFrame {
 		lblGestiondeAdopcion.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		contentPane.add(lblGestiondeAdopcion);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(58, 167, 40, 39);
-		lblNewLabel.setIcon(new ImageIcon(adopciones.class.getResource("/imagenes/perro.png")));
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(60, 211, 40, 39);
-		lblNewLabel_1.setIcon(new ImageIcon(adopciones.class.getResource("/imagenes/humano.png")));
-		contentPane.add(lblNewLabel_1);
-		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBounds(60, 211, 40, 39);
 		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon(adopciones.class.getResource("/imagenes/fondoprincipal.jpg")));
+		lblNewLabel_2.setBounds(0, 0, 434, 261);
+		contentPane.add(lblNewLabel_2);
 	}
 }

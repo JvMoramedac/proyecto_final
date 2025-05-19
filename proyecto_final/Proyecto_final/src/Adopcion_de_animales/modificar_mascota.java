@@ -17,6 +17,7 @@ public class modificar_mascota extends JFrame {
     private JTextField cajaNombreMascota, cajaNuevaEdad, cajaNuevaEspecie, cajaNuevaRaza;
     private JTable tablaMascotas;
     private DefaultTableModel modeloTabla;
+    private JLabel lblNewLabel;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -97,6 +98,11 @@ public class modificar_mascota extends JFrame {
         btnActualizar.setBounds(150, 320, 130, 23);
         btnActualizar.addActionListener(e -> actualizarMascota());
         contentPane.add(btnActualizar);
+        
+        lblNewLabel = new JLabel("New label");
+        lblNewLabel.setIcon(new ImageIcon(modificar_mascota.class.getResource("/imagenes/fondoprincipal.jpg")));
+        lblNewLabel.setBounds(0, 0, 584, 411);
+        contentPane.add(lblNewLabel);
 
         cargarDatos();
     }

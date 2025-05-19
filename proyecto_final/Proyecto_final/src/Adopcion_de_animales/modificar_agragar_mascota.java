@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class modificar_agragar_mascota extends JFrame {
 
@@ -64,6 +66,11 @@ public class modificar_agragar_mascota extends JFrame {
 		});
 		btnAgregarMascota.setBounds(231, 117, 193, 23);
 		contentPane.add(btnAgregarMascota);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(modificar_agragar_mascota.class.getResource("/imagenes/fondoprincipal.jpg")));
+		lblNewLabel.setBounds(0, 0, 434, 261);
+		contentPane.add(lblNewLabel);
 	}
 
 }
