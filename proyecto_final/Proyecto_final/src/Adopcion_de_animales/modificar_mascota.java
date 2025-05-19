@@ -17,6 +17,8 @@ public class modificar_mascota extends JFrame {
     private JTextField cajaNombreMascota, cajaNuevaEdad, cajaNuevaEspecie, cajaNuevaRaza;
     private JTable tablaMascotas;
     private DefaultTableModel modeloTabla;
+    private JLabel lblNewLabel_1;
+    private JTextField cajachip;
     private JLabel lblNewLabel;
 
     public static void main(String[] args) {
@@ -40,7 +42,7 @@ public class modificar_mascota extends JFrame {
         contentPane.setLayout(null);
 
         // Tabla con datos de mascotas
-        String[] columnas = {"Nombre", "Edad", "Especie", "Raza"};
+        String[] columnas = {"Chip Mascota", "Nombre", "Edad", "Especie", "Raza"};
         modeloTabla = new DefaultTableModel(null, columnas);
         tablaMascotas = new JTable(modeloTabla);
         JScrollPane scrollPane = new JScrollPane(tablaMascotas);
@@ -51,53 +53,63 @@ public class modificar_mascota extends JFrame {
         tablaMascotas.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 int filaSeleccionada = tablaMascotas.getSelectedRow();
-                cajaNombreMascota.setText(modeloTabla.getValueAt(filaSeleccionada, 0).toString());
-                cajaNuevaEdad.setText(modeloTabla.getValueAt(filaSeleccionada, 1).toString());
-                cajaNuevaEspecie.setText(modeloTabla.getValueAt(filaSeleccionada, 2).toString());
-                cajaNuevaRaza.setText(modeloTabla.getValueAt(filaSeleccionada, 3).toString());
+                cajachip.setText(modeloTabla.getValueAt(filaSeleccionada, 0).toString());
+                cajaNombreMascota.setText(modeloTabla.getValueAt(filaSeleccionada, 1).toString());
+                cajaNuevaEdad.setText(modeloTabla.getValueAt(filaSeleccionada, 2).toString());
+                cajaNuevaEspecie.setText(modeloTabla.getValueAt(filaSeleccionada, 3).toString());
+                cajaNuevaRaza.setText(modeloTabla.getValueAt(filaSeleccionada, 4).toString());
             }
         });
 
         JLabel lblNombreMascota = new JLabel("Nombre Mascota:");
-        lblNombreMascota.setBounds(20, 200, 120, 14);
+        lblNombreMascota.setBounds(20, 236, 120, 14);
         contentPane.add(lblNombreMascota);
 
         cajaNombreMascota = new JTextField();
-        cajaNombreMascota.setBounds(150, 197, 130, 20);
+        cajaNombreMascota.setBounds(150, 233, 130, 20);
         contentPane.add(cajaNombreMascota);
         cajaNombreMascota.setColumns(10);
 
         JLabel lblNuevaEdad = new JLabel("Nueva Edad:");
-        lblNuevaEdad.setBounds(20, 230, 120, 14);
+        lblNuevaEdad.setBounds(20, 270, 120, 14);
         contentPane.add(lblNuevaEdad);
 
         cajaNuevaEdad = new JTextField();
-        cajaNuevaEdad.setBounds(150, 227, 130, 20);
+        cajaNuevaEdad.setBounds(150, 264, 130, 20);
         contentPane.add(cajaNuevaEdad);
         cajaNuevaEdad.setColumns(10);
 
         JLabel lblNuevaEspecie = new JLabel("Nueva Especie:");
-        lblNuevaEspecie.setBounds(20, 260, 120, 14);
+        lblNuevaEspecie.setBounds(20, 301, 120, 14);
         contentPane.add(lblNuevaEspecie);
 
         cajaNuevaEspecie = new JTextField();
-        cajaNuevaEspecie.setBounds(150, 257, 130, 20);
+        cajaNuevaEspecie.setBounds(150, 298, 130, 20);
         contentPane.add(cajaNuevaEspecie);
         cajaNuevaEspecie.setColumns(10);
 
         JLabel lblNuevaRaza = new JLabel("Nueva Raza:");
-        lblNuevaRaza.setBounds(20, 290, 120, 14);
+        lblNuevaRaza.setBounds(20, 332, 120, 14);
         contentPane.add(lblNuevaRaza);
 
         cajaNuevaRaza = new JTextField();
-        cajaNuevaRaza.setBounds(150, 287, 130, 20);
+        cajaNuevaRaza.setBounds(150, 329, 130, 20);
         contentPane.add(cajaNuevaRaza);
         cajaNuevaRaza.setColumns(10);
 
         JButton btnActualizar = new JButton("Actualizar");
-        btnActualizar.setBounds(150, 320, 130, 23);
+        btnActualizar.setBounds(150, 360, 130, 23);
         btnActualizar.addActionListener(e -> actualizarMascota());
         contentPane.add(btnActualizar);
+        
+        lblNewLabel_1 = new JLabel("Chip Mascota :");
+        lblNewLabel_1.setBounds(20, 201, 82, 14);
+        contentPane.add(lblNewLabel_1);
+        
+        cajachip = new JTextField();
+        cajachip.setBounds(150, 201, 130, 20);
+        contentPane.add(cajachip);
+        cajachip.setColumns(10);
         
         lblNewLabel = new JLabel("New label");
         lblNewLabel.setIcon(new ImageIcon(modificar_mascota.class.getResource("/imagenes/fondoprincipal.jpg")));
@@ -112,12 +124,12 @@ public class modificar_mascota extends JFrame {
         try {
             conexion.conectar();
             Connection conn = conexion.getConexion();
-            PreparedStatement stmt = conn.prepareStatement("SELECT Nombre, Edad, Especie, Raza FROM mascotas");
+            PreparedStatement stmt = conn.prepareStatement("SELECT ChipMascota, Nombre, Edad, Especie, Raza FROM mascotas");
             ResultSet rs = stmt.executeQuery();
 
             modeloTabla.setRowCount(0);
             while (rs.next()) {
-                modeloTabla.addRow(new Object[]{rs.getString("Nombre"), rs.getString("Edad"), rs.getString("Especie"), rs.getString("Raza")});
+                modeloTabla.addRow(new Object[]{rs.getString("ChipMascota"), rs.getString("Nombre"), rs.getString("Edad"), rs.getString("Especie"), rs.getString("Raza")});
             }
             conexion.desconectar();
         } catch (SQLException e) {
@@ -129,21 +141,22 @@ public class modificar_mascota extends JFrame {
         ConexionMySQL conexion = new ConexionMySQL("root", "", "centro_de_adopcon");
         try {
             conexion.conectar();
-            Connection conn = conexion.getConexion();
-            String sql = "UPDATE mascotas SET Edad = ?, Especie = ?, Raza = ? WHERE Nombre = ?";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, cajaNuevaEdad.getText());
+           // conn = conexion.getConexion();
+            String sql = "UPDATE mascotas SET Nombre = '"+ cajaNombreMascota.getText() + "',Especie ='" + cajaNuevaEspecie.getText()+ "',Raza ='" + cajaNuevaRaza.getText() + "',Edad ='" + cajaNuevaEdad.getText()+"'WHERE ChipMascota = '"+ cajachip.getText() +"'";
+           conexion.ejecutarInsertDeleteUpdate(sql);
+          /* pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, cajaNuevaEdad.getText());
             pstmt.setString(2, cajaNuevaEspecie.getText());
             pstmt.setString(3, cajaNuevaRaza.getText());
             pstmt.setString(4, cajaNombreMascota.getText());
 
-            int filasAfectadas = pstmt.executeUpdate();
+           int filasAfectadas = pstmt.executeUpdate();
             if (filasAfectadas > 0) {
                 JOptionPane.showMessageDialog(this, "Mascota actualizada correctamente.");
                 cargarDatos();  // Refrescar la tabla
             } else {
                 JOptionPane.showMessageDialog(this, "No se encontró la mascota con el nombre proporcionado.");
-            }
+            */
             conexion.desconectar();
         } catch (SQLException e) {
             e.printStackTrace();

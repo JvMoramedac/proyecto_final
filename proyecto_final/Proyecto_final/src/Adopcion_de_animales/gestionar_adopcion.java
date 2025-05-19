@@ -2,6 +2,7 @@ package Adopcion_de_animales;
 
 import java.awt.EventQueue;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -38,8 +41,7 @@ public class gestionar_adopcion extends JFrame {
         JButton btnVolverAlMenu = new JButton("Volver Al Menú");
         btnVolverAlMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                adopciones A1 = new adopciones();
-                A1.setVisible(true);
+            	dispose();
             }
         });
         btnVolverAlMenu.setBounds(238, 11, 103, 23);
@@ -57,7 +59,7 @@ public class gestionar_adopcion extends JFrame {
         lblTelefono.setBounds(28, 208, 66, 14);
         contentPane.add(lblTelefono);
 
-        JLabel lblNombreMascota = new JLabel("Nombre Mascota :");
+        JLabel lblNombreMascota = new JLabel("Chip Mascota :");
         lblNombreMascota.setBounds(29, 233, 87, 14);
         contentPane.add(lblNombreMascota);
 
@@ -87,10 +89,10 @@ public class gestionar_adopcion extends JFrame {
                 ConexionMySQL conexion = new ConexionMySQL("root", "", "centro_de_adopcon");
                 try {
                     conexion.conectar();
-                    String sentencia = "INSERT INTO adopcion (Nombre, DNI, NTelefono, Nombre_Mascota ) VALUES ('" + cajaNombre.getText() + "','" + cajaDNI.getText()+ "','" + cajaNTelefono.getText() + "','" + cajaNombreMascota.getText()+"')";
+                    String sentencia = "INSERT INTO adopcion (  Nombre, DNI, NTelefono, ChipMascota ) VALUES ('"+ cajaNombre.getText() + "','" + cajaDNI.getText()+ "','" + cajaNTelefono.getText() + "','" +  cajaNombreMascota.getText() + "')";
                     conexion.ejecutarInsertDeleteUpdate(sentencia);
                     String nombreMascota = cajaNombreMascota.getText();
-                    String sentencia1 = "DELETE FROM mascotas WHERE Nombre = '" + nombreMascota + "'";
+                    String sentencia1 = "DELETE FROM mascotas WHERE ChipMascota = '" + nombreMascota + "'";
                     conexion.ejecutarInsertDeleteUpdate(sentencia1);
                     conexion.desconectar();
                     dispose();
@@ -102,17 +104,24 @@ public class gestionar_adopcion extends JFrame {
         btnAdoptarAnimal.setBounds(88, 11, 140, 23);
         contentPane.add(btnAdoptarAnimal);
 
-        // Configuración de la tabla
-        String[] columnas = {"Nombre", "Especie", "Raza", "Edad"};
+        // Tabla con datos de mascotas
+        String[] columnas = {"Chip Mascota", "Nombre", "Edad", "Especie", "Raza"};
         modeloTabla = new DefaultTableModel(null, columnas);
         tablaMascotas = new JTable(modeloTabla);
         JScrollPane scrollPane = new JScrollPane(tablaMascotas);
-        scrollPane.setBounds(10, 40, 414, 95);
+        scrollPane.setBounds(42, 37, 348, 98);
         contentPane.add(scrollPane);
 
-        // Cargar los datos en la tabla desde la base de datos
-        cargarDatos();
-
+        // Capturar clic en la tabla
+        tablaMascotas.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int filaSeleccionada = tablaMascotas.getSelectedRow();
+                cajaNombreMascota.setText(modeloTabla.getValueAt(filaSeleccionada, 0).toString());
+                cajaNombre.setText(modeloTabla.getValueAt(filaSeleccionada, 1).toString());
+                cajaDNI.setText(modeloTabla.getValueAt(filaSeleccionada, 2).toString());
+                cajaNTelefono.setText(modeloTabla.getValueAt(filaSeleccionada, 3).toString());
+            }
+        });
         // Botón para eliminar mascota
         JButton btnEliminarMascota = new JButton("Eliminar Mascota");
         btnEliminarMascota.addActionListener(new ActionListener() {
@@ -121,7 +130,7 @@ public class gestionar_adopcion extends JFrame {
                 try {
                     conexion.conectar();
                     String nombreMascota = cajaNombreMascota.getText();
-                    String sentencia = "DELETE FROM mascotas WHERE Nombre = '" + nombreMascota + "'";
+                    String sentencia = "DELETE FROM mascotas WHERE ChipMascota = '" + nombreMascota + "'";
                     conexion.ejecutarInsertDeleteUpdate(sentencia);
                     conexion.desconectar();
 
@@ -144,32 +153,26 @@ public class gestionar_adopcion extends JFrame {
         lblNewLabel.setIcon(new ImageIcon(gestionar_adopcion.class.getResource("/imagenes/fondoprincipal.jpg")));
         lblNewLabel.setBounds(0, 0, 434, 261);
         contentPane.add(lblNewLabel);
+        cargarDatos();
     }
-
-    // Método para cargar los datos en la tabla
     private void cargarDatos() {
         ConexionMySQL conexion = new ConexionMySQL("root", "", "centro_de_adopcon");
         try {
             conexion.conectar();
             Connection conn = conexion.getConexion();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM mascotas");
+            PreparedStatement stmt = conn.prepareStatement("SELECT ChipMascota, Nombre, Edad, Especie, Raza FROM mascotas");
+            ResultSet rs = stmt.executeQuery();
 
-            // Limpiar tabla antes de agregar nuevos datos
             modeloTabla.setRowCount(0);
-
             while (rs.next()) {
-                String nombre = rs.getString("Nombre");
-                String especie = rs.getString("Especie");
-                String raza = rs.getString("Raza");
-                String edad = rs.getString("Edad");
-                modeloTabla.addRow(new Object[]{nombre, especie, raza, edad});
+            	modeloTabla.addRow(new Object[]{rs.getString("ChipMascota"), rs.getString("Nombre"), rs.getString("Edad"), rs.getString("Especie"), rs.getString("Raza")});
             }
             conexion.desconectar();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+}
+
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -181,7 +184,10 @@ public class gestionar_adopcion extends JFrame {
                     e.printStackTrace();
                 }
             }
+           
         });
+       
     }
+    
 }
 
