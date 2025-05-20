@@ -35,7 +35,7 @@ public class modificar_mascota extends JFrame {
     public modificar_mascota() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 600, 450);
-		setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -117,6 +117,30 @@ public class modificar_mascota extends JFrame {
         contentPane.add(lblNewLabel);
 
         cargarDatos();
+        crearNuevoTrigger();  // Se llama al método para crear el trigger
+    }
+
+    private void crearNuevoTrigger() {
+        ConexionMySQL conexion = new ConexionMySQL("root", "", "centro_de_adopcon");
+        try {
+            conexion.conectar();
+
+            // Eliminar el trigger si ya existe
+            String dropTrigger = "DROP TRIGGER IF EXISTS guardar_cambios_mascota;";
+            conexion.ejecutarInsertDeleteUpdate(dropTrigger);
+
+            // Crear el nuevo trigger
+            String createTrigger = "CREATE TRIGGER guardar_cambios_mascota AFTER UPDATE ON mascotas " +
+                                   "FOR EACH ROW BEGIN " +
+                                   "INSERT INTO historial_cambios_nuevo (ChipMascota, Nombre_Anterior, Nombre_Nuevo, Edad_Anterior, Edad_Nueva, Especie_Anterior, Especie_Nueva, Raza_Anterior, Raza_Nueva, Fecha_Cambio) " +
+                                   "VALUES (OLD.ChipMascota, OLD.Nombre, NEW.Nombre, OLD.Edad, NEW.Edad, OLD.Especie, NEW.Especie, OLD.Raza, NEW.Raza, NOW()); " +
+                                   "END;";
+            conexion.ejecutarInsertDeleteUpdate(createTrigger);
+
+            conexion.desconectar();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void cargarDatos() {
@@ -141,22 +165,9 @@ public class modificar_mascota extends JFrame {
         ConexionMySQL conexion = new ConexionMySQL("root", "", "centro_de_adopcon");
         try {
             conexion.conectar();
-           // conn = conexion.getConexion();
-            String sql = "UPDATE mascotas SET Nombre = '"+ cajaNombreMascota.getText() + "',Especie ='" + cajaNuevaEspecie.getText()+ "',Raza ='" + cajaNuevaRaza.getText() + "',Edad ='" + cajaNuevaEdad.getText()+"'WHERE ChipMascota = '"+ cajachip.getText() +"'";
-           conexion.ejecutarInsertDeleteUpdate(sql);
-          /* pstmt = conn.prepareStatement(sql);
-           pstmt.setString(1, cajaNuevaEdad.getText());
-            pstmt.setString(2, cajaNuevaEspecie.getText());
-            pstmt.setString(3, cajaNuevaRaza.getText());
-            pstmt.setString(4, cajaNombreMascota.getText());
-
-           int filasAfectadas = pstmt.executeUpdate();
-            if (filasAfectadas > 0) {
-                JOptionPane.showMessageDialog(this, "Mascota actualizada correctamente.");
-                cargarDatos();  // Refrescar la tabla
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontró la mascota con el nombre proporcionado.");
-            */
+            String sql = "UPDATE mascotas SET Nombre = '"+ cajaNombreMascota.getText() + "', Especie ='" + cajaNuevaEspecie.getText()+ "', Raza ='" + cajaNuevaRaza.getText() + "', Edad ='" + cajaNuevaEdad.getText()+"' WHERE ChipMascota = '"+ cajachip.getText() +"'";
+            conexion.ejecutarInsertDeleteUpdate(sql);
+            JOptionPane.showMessageDialog(this, "Mascota actualizada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             conexion.desconectar();
         } catch (SQLException e) {
             e.printStackTrace();
