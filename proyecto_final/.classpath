@@ -6,15 +6,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="Proyecto_final/src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="lib" path="Proyecto_final/src/Adopcion_de_animales/mysql-connector-java-8.0.20.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="Proyecto_final/bin"/>
 </classpath>

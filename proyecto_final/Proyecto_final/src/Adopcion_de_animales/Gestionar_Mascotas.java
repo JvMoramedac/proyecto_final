@@ -28,11 +28,11 @@ public class Gestionar_Mascotas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField cajanombre;
-	private JTextField cajaespecie;
-	private JTextField cajaraza;
-	private JTextField cajaedad;
-	private JTextField cajachip;
+	public JTextField cajanombre;
+	public JTextField cajaespecie;
+	public JTextField cajaraza;
+	public JTextField cajaedad;
+	public JTextField cajachip;
     private DefaultTableModel modeloTabla;
     private JTable tablaMascotas;
 
@@ -140,10 +140,10 @@ public class Gestionar_Mascotas extends JFrame {
 		 contentPane.add(cajachip);
 		 cajachip.setColumns(10);
 		 
-		 JLabel lblNewLabel = new JLabel("New label");
-		 lblNewLabel.setIcon(new ImageIcon(Gestionar_Mascotas.class.getResource("/imagenes/fondoprincipal.jpg")));
-		 lblNewLabel.setBounds(0, 0, 434, 261);
-		 contentPane.add(lblNewLabel);
+		 JLabel lblfotofondo = new JLabel("New label");
+		 lblfotofondo.setIcon(new ImageIcon(Gestionar_Mascotas.class.getResource("/imagenes/fondoprincipal.jpg")));
+		 lblfotofondo.setBounds(0, 0, 434, 261);
+		 contentPane.add(lblfotofondo);
 		/*
 		 String[] columnNames = {"Nombre", "Especie", "Raza", "Edad"};
 		  DefaultTableModel tableModel = new DefaultTableModel(columnNames, 3);
