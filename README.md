@@ -1,6 +1,6 @@
 # 🐾 Sistema de Gestión de Adopción de Animales 🐶🐱
 
-¡Bienvenidos al **Sistema de Gestión de Adopción de Animales**! 🎉 Esta aplicación de escritorio, desarrollada con mucho cariño en Java, ayuda a los centros de adopción a gestionar mascotas y adopciones de forma sencilla e intuitiva. Con una interfaz gráfica amigable y una base de datos robusta, ¡hace que encontrar un hogar para cada peludito sea más fácil que nunca! 🏡
+¡Bienvenidos al **Sistema de Gestión de Adopción de Animales**! 🎉 Esta aplicación de escritorio, desarrollada en Java, ayuda a los centros de adopción a gestionar mascotas y adopciones de forma sencilla e intuitiva. Con una interfaz gráfica amigable y una base de datos robusta. 🏡
 
 ---
 
@@ -31,11 +31,11 @@ Con una interfaz gráfica creada en Java Swing y una base de datos MySQL, esta a
 
 ## 💻 Programación
 
-¡El corazón de nuestra app está en su código! 🖥️ Aquí te contamos cómo lo hicimos brillar:
+🖥️ Aquí te contamos cómo lo hicimos brillar:
 
-- **Interfaz Gráfica (GUI)**: Usamos **Java Swing** para crear una interfaz súper amigable. 🖼️ Ventanas con botones, campos de texto y tablas hacen que gestionar mascotas sea tan fácil como acariciar a un gatito. Incluye un fondo personalizado para darle un toque especial. ✨
-- **Manejo de Eventos**: Cada clic cuenta. 🖱️ Los botones y tablas responden a tus acciones gracias a controladores de eventos que conectan la interfaz con la lógica, como abrir formularios o cargar datos al seleccionar una mascota.
-- **Conexión a Base de Datos**: Con **JDBC** y el driver de MySQL, la app se comunica con la base de datos como si fueran viejos amigos. 🗣️ Todo está encapsulado en una clase dedicada para mantener las cosas ordenadas.
+- **Interfaz Gráfica (GUI)**: Usamos **Java Swing** para crear una interfaz súper amigable. 🖼️ Ventanas con botones, campos de texto y tablas hacen que gestionar mascotas sea tan fácil como acariciar a un gatito. Incluye un fondo personalizado para darle un toque     especial. ✨
+- **Manejo de Eventos**:🖱️ Los botones y tablas responden a tus acciones gracias a controladores de eventos que conectan la interfaz con la lógica, como abrir formularios o cargar datos al seleccionar una mascota.
+- **Conexión a Base de Datos**: Con **JDBC** y el driver de MySQL, la app se comunica con la base de datos. 🗣️ Todo está encapsulado en una clase dedicada para mantener las cosas ordenadas.
 - **Persistencia de Datos**: Implementamos operaciones **CRUD** (Crear, Leer, Actualizar, Eliminar) para manejar mascotas y adopciones. Desde agregar un nuevo perrito hasta actualizar su información, todo se guarda de forma segura. 🔒
 - **Principios de POO**: Usamos **encapsulación** para organizar el código en clases claras, **herencia** para las ventanas gráficas, y **polimorfismo** para manejar eventos de forma flexible. ¡Todo bien estructurado en el paquete `Adopcion_de_animales`! 🧩
 
@@ -43,16 +43,16 @@ Con una interfaz gráfica creada en Java Swing y una base de datos MySQL, esta a
 
 ## 🗄️ Base de Datos
 
-Nuestra base de datos es el hogar donde guardamos toda la información de las mascotas y sus adopciones. 🏠 Aquí los detalles:
+Nuestra base de datos es el hogar donde guardamos toda la información de las mascotas y sus adopciones. 🏠
 
 - **SGBD Elegido**: **MySQL 8.0**, porque es confiable, fácil de configurar y perfecto para nuestro proyecto. ✅
 - **Esquema de Datos**: Diseñamos un modelo relacional normalizado con tres tablas:
   - **`mascotas`**: Guarda el chip, nombre, edad, especie y raza de cada animalito. 🐶
   - **`adopcion`**: Registra los datos del adoptante (nombre, DNI, teléfono) y la mascota adoptada. 👨‍👩‍👧
-  - **`historial_cambios_nuevo`**: Almacena los cambios en los datos de las mascotas, como un diario de sus aventuras. 📖
+  - **`historial_cambios_nuevo`**: Almacena los cambios en los datos de las mascotas. 📖
 - **Scripts SQL**: Creamos scripts para:
   - **Estructura** (DDL): Tablas con claves primarias y restricciones. 🛠️
-  - **Datos de Ejemplo** (DML): Mascotas adorables como "Luna" (un labrador) o "Miau" (un siamés). 🐾
+  - **Datos de Ejemplo** (DML): Mascotas adorables como "Tristan" (un labrador) o "Nube" (un siamés). 🐾
 - **Procedimientos Almacenados**: Incluimos un procedimiento para registrar adopciones, verificando que la mascota exista antes de guardarla y eliminarla de la lista. 🛡️
 - **Disparadores (Triggers)**: Un trigger mágico ✨ guarda automáticamente los cambios en las mascotas (nombre, edad, especie, raza) en el historial con la fecha exacta.
 - **Modelado Complejo**: Usamos relaciones entre tablas y estamos listos para añadir un campo JSON en `mascotas` para datos extras, como el historial médico. 📈
@@ -79,7 +79,7 @@ Nuestra base de datos es el hogar donde guardamos toda la información de las ma
   5. ¡Ejecuta la app desde `adopciones.java` y empieza a gestionar mascotas! 🐕
 
 - **Control de Versiones**: Usamos **Git** y **GitHub** con ramas como `main` (para la versión estable) y `develop` (para nuevas ideas). Cada cambio tiene un commit claro, como "Añade trigger para historial". 🌟
-- **Pruebas Unitarias**: Creamos pruebas con **JUnit** para verificar la conexión a la base de datos y las operaciones CRUD. ¡Todo funciona como un reloj! ⏱️
+- **Pruebas Unitarias**: Creamos pruebas con **JUnit** para verificar la conexión a la base de datos y las operaciones CRUD. ⏱️
 - **Depuración y Refactorización**: Usamos el depurador del IDE para cazar errores y refactorizamos el código para que sea limpio y fácil de mantener. 🧹
 - **Calidad de Código**: Seguimos las convenciones de Java, con nombres claros y un código que se lee como una historia. 📚
 - **Documentación**:
@@ -91,7 +91,7 @@ Nuestra base de datos es el hogar donde guardamos toda la información de las ma
 ## 🚀 Instalación
 
 1. Clona el repositorio desde GitHub. 📥
-2. Configura MySQL con la base de datos y tablas (¡usa nuestros Scripts SQL!). 🗄️
+2. Configura MySQL con la base de datos y tablas. 🗄️
 3. Añade los JARs de MySQL y JUnit al proyecto. 🔗
 4. Coloca `fondoprincipal.jpg` en `/imagenes`. 🖼️
 5. Ejecuta `adopciones.java` desde tu IDE. ¡Listo para adoptar! 🐾
