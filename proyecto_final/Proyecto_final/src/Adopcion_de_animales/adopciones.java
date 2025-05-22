@@ -43,7 +43,7 @@ public class adopciones extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(null);//Esto es para que se centre la pantalla
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -53,11 +53,11 @@ public class adopciones extends JFrame {
 		btnGestionarMascota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				modificar_agragar_mascota M1 = new modificar_agragar_mascota();
-				M1.setVisible(true);
+				M1.setVisible(true);// Para que sea visible el boton
 			}
 		});
 		contentPane.setLayout(null);
-		btnGestionarMascota.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnGestionarMascota.setFont(new Font("Tahoma", Font.PLAIN, 20));// El tamaño de la fuente
 		contentPane.add(btnGestionarMascota);
 		
 		JButton btnResgistrarAdopción = new JButton("Registrar Adopción");
@@ -65,7 +65,7 @@ public class adopciones extends JFrame {
 		btnResgistrarAdopción.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestionar_adopcion M2 = new gestionar_adopcion ();
-				M2.setVisible(true);
+				M2.setVisible(true);//Mostrar el boton
 			}
 		});
 		btnResgistrarAdopción.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -81,7 +81,7 @@ public class adopciones extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(adopciones.class.getResource("/imagenes/fondoprincipal.jpg")));
+		lblNewLabel_2.setIcon(new ImageIcon(adopciones.class.getResource("/imagenes/fondoprincipal.jpg"))); //Para poner una ruta relativa hacia la imagen que deseemon poner
 		lblNewLabel_2.setBounds(0, 0, 434, 261);
 		contentPane.add(lblNewLabel_2);
 	}

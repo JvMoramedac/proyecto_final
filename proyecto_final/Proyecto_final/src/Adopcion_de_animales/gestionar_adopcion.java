@@ -30,10 +30,10 @@ public class gestionar_adopcion extends JFrame {
     private DefaultTableModel modeloTabla;
 
     public gestionar_adopcion() {
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //Esto es para cuando cerremos la ventana solo se cierre esta y no toda la aplicación
         setBounds(100, 100, 450, 300);
         JPanel contentPane = new JPanel();
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(null);//Para centrarlo
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -47,7 +47,7 @@ public class gestionar_adopcion extends JFrame {
         btnVolverAlMenu.setBounds(238, 11, 103, 23);
         contentPane.add(btnVolverAlMenu);
 
-        JLabel lblNombre = new JLabel("Nombre:");
+        JLabel lblNombre = new JLabel("Nombre:"); //Para saber que información necesitamos poner
         lblNombre.setBounds(27, 146, 46, 14);
         contentPane.add(lblNombre);
 
@@ -63,7 +63,7 @@ public class gestionar_adopcion extends JFrame {
         lblNombreMascota.setBounds(29, 233, 87, 14);
         contentPane.add(lblNombreMascota);
 
-        cajaNombre = new JTextField();
+        cajaNombre = new JTextField(); //Aqui es para escribir y poderlo subir a la base de datos
         cajaNombre.setBounds(203, 143, 86, 20);
         contentPane.add(cajaNombre);
         cajaNombre.setColumns(10);
@@ -86,13 +86,14 @@ public class gestionar_adopcion extends JFrame {
         JButton btnAdoptarAnimal = new JButton("Adoptar Animal");
         btnAdoptarAnimal.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ConexionMySQL conexion = new ConexionMySQL("root", "", "centro_de_adopcon");
+                ConexionMySQL conexion = new ConexionMySQL("root", "", "centro_de_adopcon");//Aqui comenzamos la creación de la conexion 
                 try {
                     conexion.conectar();
+                    //Esto para insertar dentro de nuestra tabla
                     String sentencia = "INSERT INTO adopcion (  Nombre, DNI, NTelefono, ChipMascota ) VALUES ('"+ cajaNombre.getText() + "','" + cajaDNI.getText()+ "','" + cajaNTelefono.getText() + "','" +  cajaNombreMascota.getText() + "')";
                     conexion.ejecutarInsertDeleteUpdate(sentencia);
                     String nombreMascota = cajaNombreMascota.getText();
-                    String sentencia1 = "DELETE FROM mascotas WHERE ChipMascota = '" + nombreMascota + "'";
+                    String sentencia1 = "DELETE FROM mascotas WHERE ChipMascota = '" + nombreMascota + "'";//Esto seria para eliminar de la tabla que le indiquemos
                     conexion.ejecutarInsertDeleteUpdate(sentencia1);
                     conexion.desconectar();
                     dispose();

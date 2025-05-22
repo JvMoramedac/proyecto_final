@@ -91,7 +91,7 @@ public class Gestionar_Mascotas extends JFrame {
 		lblEdad.setBounds(10, 236, 46, 14);
 		contentPane.add(lblEdad);
 		
-		cajaespecie = new JTextField();
+		cajaespecie = new JTextField();//Para poder escribir en caja son los JTextField
 		cajaespecie.setBounds(338, 155, 86, 20);
 		contentPane.add(cajaespecie);
 		cajaespecie.setColumns(10);
@@ -110,7 +110,7 @@ public class Gestionar_Mascotas extends JFrame {
 		btnAgragarMascota.setBounds(90, 11, 115, 23);
 		btnAgragarMascota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConexionMySQL conexion = new ConexionMySQL("root", "" , "centro_de_adopcon");
+				ConexionMySQL conexion = new ConexionMySQL("root", "" , "centro_de_adopcon");//Comenzamos aqui la conexion
 				try {
 					conexion.conectar();
 					String sentencia = "INSERT INTO mascotas (ChipMascota, Nombre, Especie, Raza, Edad ) VALUES ('" + cajachip.getText() + "','" + cajanombre.getText() + "','" + cajaespecie.getText()+ "','" + cajaraza.getText() + "','" + cajaedad.getText()+"')";
